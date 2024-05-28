@@ -1,6 +1,7 @@
 import express from "express";
 
 const app = express();
+app.use(express.json());  // utiliza para conversao de string em objetos json
 
 const livros = [
     {
@@ -21,5 +22,12 @@ app.get("/", (req,res)=>{
 app.get("/livros", (req, res) => {
     res.status(200).json(livros); // utiliza o json para objetos json
   });
+
+  //metodo POST enviando dados
+  app.post("/livros", (req, res) => {
+    livros.push(req.body);
+    res.status(201).send("livro cadastrado com sucesso");
+  });
+  
 
 export default app;
