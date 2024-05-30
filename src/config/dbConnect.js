@@ -5,9 +5,14 @@ import mongoose, { mongo } from "mongoose";
   //mongoose.connect("mongodb+srv://admin:admin123@cluster0.psjvjx8.mongodb.net/livraria?retryWrites=true&w=majority&appName=Cluster0"); 
  //conectaNaDatabase.catch(err => console.log(err));
 
- async function conectaNaDatabase() {  
+ /*async function conectaNaDatabase() {  
         mongoose.connect("mongodb+srv://admin:admin123@cluster0.op2uxh4.mongodb.net/livrarias?retryWrites=true&w=majority&appName=Cluster0");
- };
+ };*/
+
+ async function conectaNaDatabase() {
+       mongoose.connect(process.env.DB_CONNECTION_STRING);
+       return mongoose.connection;
+     };
  
  export default conectaNaDatabase;
 
